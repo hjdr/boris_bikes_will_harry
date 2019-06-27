@@ -9,13 +9,21 @@ class DockingStation
   end
 
   def release_bike
-    raise "No Bikes Available" if @available_bikes == [] 
-    Bike.new
+    no_bikes? ? raise("No Bikes Available") : @available_bikes.pop
   end
 
   def receive_bike(bike)
-    raise "Bike rack is full" if @available_bikes.length >= 1
-    @available_bikes << bike
+    full? ? raise("Bike rack is full") : @available_bikes << bike
+  end
+
+private
+
+  def full?
+   @available_bikes.length >= 20
+ end
+
+  def no_bikes?
+    @available_bikes.empty?
   end
 
 end

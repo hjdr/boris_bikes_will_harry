@@ -39,7 +39,7 @@ describe DockingStation do
 
   it "raises an Error if the bike rack is full" do
     new_station = DockingStation.new
-    new_station.receive_bike("bike")
+    20.times{new_station.receive_bike("bike")}
     expect { new_station.receive_bike("bike") }.to raise_error "Bike rack is full"
   end
 
