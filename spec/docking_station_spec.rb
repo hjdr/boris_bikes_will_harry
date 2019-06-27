@@ -6,7 +6,7 @@ describe DockingStation do
   end
 
   describe '#release_bike' do
-    subject(:station) do  
+    subject(:station) do
       station = DockingStation.new
       station.receive_bike(Bike.new)
       station
@@ -28,7 +28,7 @@ describe DockingStation do
 
   describe "#receive_bike" do
     it "responds to receive_bike" do
-      expect(subject).to respond_to(:receive_bike)
+      expect(subject).to respond_to(:receive_bike).with(1).argument
     end
   end
 
