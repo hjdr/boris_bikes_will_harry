@@ -5,6 +5,23 @@ describe DockingStation do
     expect(subject).to respond_to :release_bike
   end
 
+  context "#initialize" do 
+    context "with parameters" do 
+      let(:dockingstation) {DockingStation.new(40)}
+
+      it "should use specified values" do 
+        expect(dockingstation.capacity).to eq(40)
+      end 
+    end
+    context "without parameters" do 
+      let(:dockingstation) {DockingStation.new}
+
+      it "should use defaults" do 
+        expect(dockingstation.capacity).to eq(20)
+      end
+    end
+  end 
+
   describe '#release_bike' do
     subject(:station) do
       station = DockingStation.new
@@ -52,5 +69,7 @@ describe DockingStation do
       expect(station.available_bikes).to eq([boris_bike])
     end
   end
+
+   
 
 end
