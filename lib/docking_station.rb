@@ -14,6 +14,7 @@ class DockingStation
   end
 
   def receive_bike(bike)
+    raise "Bike rack is full" if @available_bikes.length >= 1
     @available_bikes << bike
   end
 

@@ -37,6 +37,13 @@ describe DockingStation do
     expect(subject.receive_bike(boris_bike)).to include(boris_bike)
   end
 
+  it "raises an Error if the bike rack is full" do
+    new_station = DockingStation.new
+    new_station.receive_bike("bike")
+    expect { new_station.receive_bike("bike") }.to raise_error "Bike rack is full"
+  end
+
+
   describe "@available_bikes" do
     it "lists all of the available bikes at the station" do
       station = DockingStation.new
